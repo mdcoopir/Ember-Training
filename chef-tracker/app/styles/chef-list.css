@@ -1,0 +1,12 @@
+.chefsPage > div:first-child {
+  min-width: 300px;
+}
+
+.not-available {
+  color: gray;
+  text-decoration: line-through;
+  font-weight: normal;
+}
+.chef-card .itemButtons {
+  float: right;
+}

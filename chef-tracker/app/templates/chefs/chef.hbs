@@ -1,0 +1,16 @@
+<h1>{{model.name}}</h1>
+{{icon-image model.imageUrl float="left"}}
+<p>
+  {{model.description}}
+</p>
+<p>
+  Number of students:
+  <button {{action "removeStudent" model}}>-</button>
+  {{model.students}}
+  <button {{action "addStudent" model}}>+</button>
+</p>
+<div style="clear:both;"></div>
+
+<div>
+  <button {{action "fireChef" model}} class="float-right">Fire</button>
+</div>

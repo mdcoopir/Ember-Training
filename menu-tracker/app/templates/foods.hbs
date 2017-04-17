@@ -1,0 +1,32 @@
+<div class="w3-row">
+  <div class="w3-half w3-container w3-theme-l5 w3-border">
+
+    <div class="float-right">Open {{model.restaurant.yearsOpen}} years </div>
+    <h2> {{model.restaurant.name}}</h2>
+
+    <p>
+      Menu Tracker helps you see what dishes are available today.
+    </p>
+    <p>
+      Number of foods: {{menuLength}}
+    </p>
+    <p>
+      Avaialable foods: {{availableItems.length}}
+    </p>
+    <div class="w3-border food-list">
+      {{#each model.foods as |food|}}
+        {{food-item food=food}}
+      {{/each}}
+    </div>
+    <div class="w3-container w3-theme-l2">
+      <p>
+        {{input value=newItem}}
+        <button {{action 'saveNewItem'}} disabled={{disableNewFoodButton}}>Add New Food</button>
+      </p>
+    </div>
+  </div>
+  <div class="w3-rest   w3-border w3-card-4 w3-animate-top">
+    {{outlet}}
+  </div>
+</div>
+{{email-status pageName="Foods"}}

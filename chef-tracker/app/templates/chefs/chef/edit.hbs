@@ -1,0 +1,49 @@
+<h1>Edit {{model.name}}</h1>
+<div class="w3-row">
+  <div class="w3-half w3-right-align" >
+    Name:
+  </div>
+  <div class="w3-rest w3-left-align">
+    {{input value=model.name}}
+  </div>
+  <div class="w3-half w3-right-align" >
+    Description:
+  </div>
+  <div class="w3-rest w3-left-align">
+    {{textarea value=model.description cols=50}}
+  </div>
+  <div class="w3-half w3-right-align" >
+    Number of students:
+  </div>
+  <div class="w3-rest w3-left-align">
+    <button {{action "removeStudent" model}}>-</button>
+      {{model.students}}
+    <button {{action "addStudent" model}}>+</button>
+  </div>
+  <div style="clear:both;">
+
+  </div>
+  <div class="w3-half w3-right-align" >&nbsp;</div>
+  <div class="w3-rest w3-left-align">
+    {{input type="checkbox" name='hasCulinaryDegree' checked=model.hasCulinaryDegree cols=50}}  Has Culinary Degree
+  </div>
+  {{#if model.hasCulinaryDegree}}
+    <div>
+      <div class="w3-half w3-right-align" >
+        Culinary School Attended:
+      </div>
+      <div class="w3-rest w3-left-align">
+        {{input value=model.culinarySchool}}
+      </div>
+    </div>
+  {{/if}}
+  <div class="w3-half w3-right-align" >
+    Image URL:
+  </div>
+  <div class="w3-rest w3-left-align">
+    {{input value=model.imageUrl}}
+  </div>
+  {{icon-image model.imageUrl float="left"}}
+</div>
+<button {{action 'saveChef'}} class='float-right'>Save</button>
+{{outlet}}

@@ -1,0 +1,3 @@
+<select onchange={{action 'selectItem' value=target.value}}>
+  {{yield (hash option=(component 'mark-select-option' selectedValue=selectedValue))}}
+</select>

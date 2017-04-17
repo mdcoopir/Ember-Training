@@ -1,0 +1,12 @@
+@import url("folder-list.css");
+@import url("w3.css");
+@import url("w3-theme-dark-grey.css");
+
+.flex-container {
+  display: flex;
+  flex-direction:row;
+}
+.flex-item {
+  padding: 10px;
+  border-left: 1px solid gray;
+}

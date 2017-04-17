@@ -1,0 +1,8 @@
+.not-available span {
+  color: gray;
+  text-decoration: line-through;
+}
+
+.food-list .itemButtons {
+  float: right;
+}

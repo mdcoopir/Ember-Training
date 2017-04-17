@@ -1,0 +1,23 @@
+
+<header class="w3-container w3-theme-l3">
+  <h1>{{model.food.name}}</h1>
+</header>
+<div class="w3-container">
+  {{icon-image model.food.imageUrl float='left'}}
+  <p>
+    {{model.food.description}}
+  </p>
+  <p>
+    Served at: {{model.restaurant.name}}
+  </p>
+
+{{!--  <p>This is served at {{model.restaurant.name}} as a {{model.course}}.</p>
+  <div style='clear:both;'>
+  </div>
+
+  <div class="w3-right">
+    {{#link-to 'foods.food.edit' model.id}}<i class='fa fa-pencil-square-o' aria-hidden='true'></i>{{/link-to}}
+    <i {{action "destroyItem" model}} class="fa fa-trash" aria-hidden="true">&nbsp;</i>
+  </div>
+--}}
+</div>

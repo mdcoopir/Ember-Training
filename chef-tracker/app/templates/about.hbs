@@ -1,0 +1,19 @@
+<h1>About Chef Tracker</h1>
+<p>
+  Want to know if your  favorite chef is cooking right now?  Chef Tracker has your back.
+</p>
+{{#collapsable-component as |isOpen component|}}
+  <div {{action 'toggleOpen' target=component}}>
+    {{if isOpen 'see less . . .' 'see more . . .'}}
+  </div>
+
+  {{#if isOpen}}
+    <p>
+      This is more text!!!
+    </p>
+  {{/if}}
+{{/collapsable-component}}
+
+{{#email-me as |word word2|}}
+  {{word}} {{word2}}. About Page!!!
+{{/email-me}}

@@ -1,0 +1,25 @@
+<div class="w3-row chefsPage">
+  <div class="w3-half w3-container w3-theme-l5 w3-border">
+    <p>
+      {{numAvailChefs}} out of {{numChefs}} are cooking!
+    </p>
+    <p>
+      Total Students: {{totalStudents}}
+    </p>
+    <div>
+      {{#each model.chefs as |chef|}}
+        {{chef-card chef=chef}}
+      {{/each}}
+    </div>
+    <fieldset>
+      <legend>
+        Add a Chef
+      </legend>
+      {{input placeholder="Chef Name" value=newChef}}
+      <button {{action "saveNewItem"}}>Add</button>
+    </fieldset>
+  </div>
+  <div class="w3-rest w3-container  w3-border w3-card-4 w3-animate-top">
+    {{outlet}}
+  </div>
+</div>

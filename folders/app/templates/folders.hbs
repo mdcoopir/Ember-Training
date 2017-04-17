@@ -1,0 +1,13 @@
+<div class="flex-container">
+  <div class="flex-item">
+    <h1>Folders</h1>
+    <div class='w3-bar-block w3-border w3-round w3-card-4 w3-light-grey'>
+      {{#each model.folders as |folder|}}
+        {{#link-to "folders.folder" folder.id class="w3-bar-item w3-button w3-round"}}{{folder.name}}{{/link-to}}
+      {{/each}}
+    </div>
+  </div>
+  <div class="flex-item">
+    {{outlet}}
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<h1>Restaurants</h1>
+<div class="w3-row">
+  <div class="w3-half w3-container">
+    {{#each model as |restaurant|}}
+      <div class="w3-container w3-card-4">
+        <div class="float-right">Open {{restaurant.yearsOpen}} years </div>
+        {{#link-to 'restaurants.restaurant' restaurant.id}} {{restaurant.name}}{{/link-to}}
+      </div>
+    {{/each}}
+
+  </div>
+  <div class="w3-rest w3-container">
+    {{outlet}}
+  </div>
+</div>
