@@ -10,13 +10,13 @@ export default Ember.Controller.extend({
       this.get('model.food').set('course', value);
     },
     selectRestaurant(selection) {
-      let food=this.get('model.food');
-      let restaurant=this.get('model.restaurants')
-      let oldRestaurant = this.get('model.food.restaurant');
-      this.set('model.food.restaurant', selection);
-      this.transitionToRoute('restaurants/restaurant/'+oldRestaurant+'/saveFood/del');
-      this.transitionToRoute('restaurants/restaurant/'+selection+'/saveFood/'+food.id);
-      food.save();
+      // let food=this.get('model.food');
+      // let restaurant=this.get('model.restaurants');
+      // let oldRestaurant = this.get('model.food.restaurant');
+      // this.set('model.food.restaurant', selection);
+      // this.transitionToRoute('restaurants/restaurant/'+oldRestaurant+'/saveFood/del');
+      // this.transitionToRoute('restaurants/restaurant/'+selection+'/saveFood/'+food.id);
+      // food.save();
     }
   }
 });
