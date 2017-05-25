@@ -8,16 +8,6 @@
     {{model.food.description}}
   </p>
   <p>
-    Served at: {{model.restaurant.name}}
+    Served at: {{model.food.restaurant.name}} as a {{model.food.course}}
   </p>
-
-{{!--  <p>This is served at {{model.restaurant.name}} as a {{model.course}}.</p>
-  <div style='clear:both;'>
-  </div>
-
-  <div class="w3-right">
-    {{#link-to 'foods.food.edit' model.id}}<i class='fa fa-pencil-square-o' aria-hidden='true'></i>{{/link-to}}
-    <i {{action "destroyItem" model}} class="fa fa-trash" aria-hidden="true">&nbsp;</i>
-  </div>
---}}
 </div>

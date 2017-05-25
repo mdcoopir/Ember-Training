@@ -1,73 +1,43 @@
 <h1>Edit {{model.food.name}}</h1>
 <div class="w3-row">
-  <div class="w3-third w3-right-align" >
+  <div class="w3-third w3-right-align">
     Name:
   </div>
   <div class="w3-rest w3-left-align">
-    {{input value=model.food.name placeholder="Name"}}
-    {{model.food.id}}
+    {{input value=model.food.name placeholder="Name"}} {{model.food.id}}
   </div>
-  <div class="w3-third w3-right-align" >
+  <div class="w3-third w3-right-align">
     Description:
   </div>
   <div class="w3-rest w3-left-align">
     {{textarea value=model.food.description cols=50 placeholder="Description"}}
   </div>
-  <div class="w3-third w3-right-align" >
+  <div class="w3-third w3-right-align">
     Course:
   </div>
   <div class="w3-rest w3-left-align">
-    {{#x-select value=model.food.course as |xs|}}
+    {{#x-select value=model.food.course action="selectCourse" as |xs|}}
       {{#xs.option value="Appitizer" }}Appitizer{{/xs.option}}
       {{#xs.option value="Entree" }}Entree{{/xs.option}}
       {{#xs.option value="Side" }}Side{{/xs.option}}
       {{#xs.option value="Desert" }}Desert{{/xs.option}}
     {{/x-select}}
   </div>
-  <div class="w3-third w3-right-align" >
+
+  <div class="w3-third w3-right-align">
     Restaurant:
+
   </div>
   <div class="w3-rest w3-left-align">
-    {{#x-select value=model.food.restaurant as |xs|}}
+    {{#x-select value=model.food.restaurant.content action="selectRestaurant" as |xs2|}}
       {{#each model.restaurants as |restaurant|}}
-        {{#xs.option value=restaurant.id}}{{restaurant.name}}{{/xs.option}}
+        {{#xs2.option value=restaurant}}{{restaurant.name}}{{/xs2.option}}
       {{/each}}
     {{/x-select}}
+    {{model.food.restaurant.content.id}}
   </div>
-
-    {{!--
-
-    {{#mark-select-box selectedValue=model.food.restaurant action='selectRestaurant' as |sb|}}
-      {{#each model.restaurants as |restaurant|}}
-        {{#sb.option value=restaurant.id}}{{restaurant.name}}{{/sb.option}}
-      {{/each}}
-    {{/mark-select-box}}
-    {{#mark-select-box selectedValue=model.food.course action='selectCourse' as |sb|}}
-      {{#sb.option value="Appitizer" }}Appitizer{{/sb.option}}
-      {{#sb.option value="Entray" }}Entray{{/sb.option}}
-      {{#sb.option value="Side" }}Side{{/sb.option}}
-      {{#sb.option value="Desert" }}Desert{{/sb.option}}
-    {{/mark-select-box}}
-
-    {{#x-select value=model.food.restaurant}}
-      {{#each model.restaurants as |restaurant|}}
-        {{#x-option value=restaurant}}{{restaurant.name}}{{/x-option}}
-      {{/each}}
-    {{/x-select}}
-
-
-{{#each vehicles as |vehicleChoice|}}
-  <option value={{vehicleChoice}} selected={{eq vehicle vehicleChoice}}>{{vehicleChoice}}</option>
-{{/each}}
-    {{#x-select}}
-      {{#x-option}}Appitizer{{/x-option}}
-    {{/x-select}}
-    {{#x-option value="Appitizer"}}Appitizer{{/x-option}}
-    {{#x-option value="Entray"}}Entray{{/x-option}}
-    {{#x-option value="Desert"}}Desert{{/x-option}}
---}}
-
-  <div class="w3-third w3-right-align" >
+  
+  <div class="w3-third w3-right-align">
     Image URL:
   </div>
   <div class="w3-rest w3-left-align">
@@ -76,5 +46,4 @@
 
   {{icon-image model.food.imageUrl float='left'}}
 </div>
-<button {{action 'saveFood'}} class="float-right">Save</button>
-{{outlet}}
+<button {{action 'saveFood'}} class="float-right">Save</button> {{outlet}}
