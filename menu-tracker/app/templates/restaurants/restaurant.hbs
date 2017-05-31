@@ -1,12 +1,12 @@
 <div class="w3-container w3-card-4">
-  <div class="float-right">Open {{model.yearsOpen}} years </div>
-  <h2> {{model.name}}</h2>
-  {{#link-to 'restaurants.restaurant.edit' model.id}}<button>Edit</button>{{/link-to}}
+  <div class="float-right">Open {{model.restaurant.yearsOpen}} years </div>
+  <h2> {{model.restaurant.name}}</h2>
+  {{#link-to 'restaurants.restaurant.edit' model.restaurant.id}}<button>Edit</button>{{/link-to}}
 
   <p>The follwoing foods are served here:</p>
 
   <ul>
-    {{#each model.foods as |food|}}
+    {{#each model.restaurant.foods as |food|}}
       <li>
         {{food.name}}
       </li>

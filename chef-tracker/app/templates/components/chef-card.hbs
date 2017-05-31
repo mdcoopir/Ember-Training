@@ -5,7 +5,7 @@
       <span class="{{if chef.isCooking ' ' 'not-available'}}">{{chef.name}}</span>
       <div class='itemButtons'>
         <i {{action "destroyItem" chef}} class="fa fa-trash" aria-hidden="true">&nbsp;</i>
-        {{#link-to 'chefs.chef.edit' chef class='fa fa-pencil-square-o'}}&nbsp;{{/link-to}}
+        {{#link-to 'chefs.chef.edit' chef.id class='fa fa-pencil-square-o'}}&nbsp;{{/link-to}}
         <i {{action "toggleAvailablity" chef}} class="fa fa-sign-{{if chef.isCooking 'out' 'in'}}" aria-hidden="true"></i>
         <i  {{action 'toggleOpen' target=component}} class="fa fa-chevron-{{if isOpen 'down' 'right'}}" aria-hidden="true"></i>
       </div>
@@ -20,6 +20,7 @@
             {{chef.students}}
           <button {{action "addStudent" chef}}>+</button>
         </div>
+        <div style="white-space: nowrap">Restaurant: {{chef.restaurant.name}}</div>
         <div style="clear: both;"> </div>
       </div>
     {{/if}}

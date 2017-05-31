@@ -1,6 +1,24 @@
 <div class="w3-container w3-card-4">
   <h1> Editing a restaurant</h1>
-  <p>Name:  {{input value=model.name}}</p>
-  <div>Years open: {{input value=model.yearsOpen}} years </div>
+  <p>Name: {{input value=model.restaurant.name}}</p>
+  <div>Years open: {{input value=model.restaurant.yearsOpen}} years </div>
+  <h3>Chefs Seving Here:</h3>
+  {{#each model.restaurant.chefs as |chef|}}
+    <div class="w3-container w3-card-4">
+      <div class='itemButtons'>
+        <i {{action "removeChef" chef}} class="fa fa-trash" aria-hidden="true">&nbsp;</i>
+      </div>
+      {{#link-to 'chefs.chef' chef.id}}{{chef.name}}{{/link-to}}
+    </div>
+  {{/each}}
+  <h3>Other Chefs:</h3>
+  {{#each otherChefs as |chef|}}
+    <div class="w3-container w3-card-4">
+      <div class='itemButtons'>
+        <i {{action "addChef" chef}} class="fa fa-arrow-up" aria-hidden="true">&nbsp;</i>
+      </div>
+      {{#link-to 'chefs.chef' chef.id}}{{chef.name}}{{/link-to}}
+    </div>
+  {{/each}}
   <button {{action 'saveRestaurant'}}>Save</button>
 </div>

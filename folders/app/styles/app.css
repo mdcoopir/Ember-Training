@@ -10,3 +10,15 @@
   padding: 10px;
   border-left: 1px solid gray;
 }
+.side-folder {
+  padding: 5px;
+  font-size: 1.3em;
+}
+
+.expanded-content {
+  margin-left: 3em;
+}
+
+.clickableIcon {
+  cursor: pointer;
+}

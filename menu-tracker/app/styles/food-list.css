@@ -3,6 +3,7 @@
   text-decoration: line-through;
 }
 
-.food-list .itemButtons {
+.itemButtons {
   float: right;
 }
+.fa {cursor: pointer;}
