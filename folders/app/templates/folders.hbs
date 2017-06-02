@@ -3,8 +3,12 @@
   <div class="w3-third w3-container "> --}}
 <div class="flex-container">
   <div class="flex-item">
-      {{#each rootFolders as |folder|}}
+      {{#each model.rootFolders as |folder|}}
         {{expandable-folder folder=folder}}
       {{/each}}
+      {{#bs-button class="btn-xs" onClick=(action 'addingItem')}}+ folder{{/bs-button}}
+      {{#if isAddingItem}}
+        {{item-adder parent=null itemType='folder' resetItemType=(action 'resetItemType')}}
+      {{/if}}
   </div>
 </div>

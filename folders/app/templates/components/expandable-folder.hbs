@@ -1,15 +1,35 @@
 <div class="sidebar-folder">
-  <span class="expander clickableIcon" {{action 'toggleExpansion'}}>
+  <div style="float:left;" class="expander clickableIcon" {{action 'toggleExpansion'}}>
     {{if isExpanded '-' '+'}}
+  </div>
+  <div style="float:left">
     {{folder.name}}
-  </span>
-  <div class='expanded-content'>
-    {{#if isExpanded}}
-      {{#each folder.folders as |folder|}}
-        {{expandable-folder folder=folder}}
-      {{/each}}
+  </div>
+  <div class="btn-group pull-left">
+    <button type="button" class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a {{action 'addFolderOn'}}>Add Folder</a></li>
+      <li><a {{action 'editFolderOn' folder.name}}>Edit File</a></li>
+      <li><a {{action 'deleteFolderOn'}}>Delete File</a></li>
+      <li><a {{action 'addFileOn'}}>Add File</a></li>
+    </ul>
+  </div>
+  {{#if isAddingItem}}
+    {{item-adder parent=folder itemType=itemType actionType=actionType itemName=itemName resetItemType=(action 'resetItemType')}}
+  {{/if}}
+  {{#if isDeletingFolder}}
+    Are you sure you want to delete this folder?
+    {{#bs-button class='btn-xs' onClick=(action 'deleteFolderOff')}}Delete{{/bs-button}}
+    {{#bs-button class='btn-xs' onClick=(action 'deleteFolderOff')}}Cancel{{/bs-button}}
+  {{/if}}
 
-      <div class='expanded-content'>
+  <div class='expanded-content' style="clear:both;">
+    {{#if isExpanded}}
+      <div>
+        {{#each folder.folders as |folder|}}
+          {{expandable-folder folder=folder}}
+        {{/each}}
         {{#each folder.files as |file|}}
           <div>{{file.name}}</div>
         {{/each}}
