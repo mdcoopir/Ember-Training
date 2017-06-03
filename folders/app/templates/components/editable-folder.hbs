@@ -1,0 +1,25 @@
+
+<div style="display: inline-block;">
+  {{folder.name}}
+</div>
+<div class="btn-group " style="display: inline-block;">
+  <button type="button" class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a {{action 'addFolderOn' actionType=actionType}}>Add {{type}}</a></li>
+    <li><a {{action 'editFolderOn' folder.name actionType=actionType}}>Edit {{type}}</a></li>
+    <li><a {{action 'setDeleteFolderFlag' true}}>Delete {{type}}</a></li>
+    <li><a {{action 'addFileOn'}}>Add File</a></li>
+  </ul>
+</div>
+{{#if (eq actionType 'Add')}}
+  {{item-adder parent=folder itemType=itemType actionType=actionType itemName=itemName resetItemType=(action 'resetItemType')}}
+{{/if}}
+{{#if (eq actionType 'Edit')}}
+  {{item-adder parent=folder.parent itemType=itemType itemId=folder.id actionType=actionType itemName=itemName resetItemType=(action 'resetItemType')}}
+{{/if}}
+{{#if isDeletingFolder}}
+  Are you sure you want to delete folder {{folder.name}}?
+  {{#bs-button class='btn-xs' onClick=(action 'deleteFolder' folder)}}Delete{{/bs-button}}
+  {{#bs-button class='btn-xs' onClick=(action 'setDeleteFolderFlag' false)}}Cancel{{/bs-button}}
+{{/if}}

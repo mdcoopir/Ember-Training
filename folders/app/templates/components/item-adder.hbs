@@ -1,5 +1,7 @@
 <div style="float:left; margin-left: 1em;">
-  {{fieldLabel}}:{{input type="text" value=itemName placeholder=fieldPlaceHolder size="20"}} {{#bs-button class="btn-xs" onClick=(action 'addItem') disabled=disableAdd}}Save{{/bs-button}} {{#bs-button class="btn-xs" onClick=(action 'resetItemType')}}Cancel{{/bs-button}}
+  {{fieldLabel}}:{{input type="text" value=itemName placeholder=fieldPlaceHolder size="20"}}
+  {{#bs-button class="btn-xs" onClick=(action 'saveItem' itemId) disabled=disableAdd}}Save{{/bs-button}}
+  {{#bs-button class="btn-xs" onClick=(action 'resetItemType')}}Cancel{{/bs-button}}
 </div>
 
 {{yield}}

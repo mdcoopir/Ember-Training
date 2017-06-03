@@ -1,0 +1,23 @@
+{{#if isEditing}}
+  {{input value=fileName placeholder='File name'}}
+  {{#bs-button class="btn-default btn-xs" onClick=(action 'saveItem' file.id)}}Save{{/bs-button}}
+  {{#bs-button class="btn-default btn-xs" onClick=(action 'setEditFileFlag' false)}}Cancel{{/bs-button}}
+{{else if isDeleting}}
+  Are you sure you want to delete {{file.name}}?
+  {{#bs-button class="btn-default btn-xs" onClick=(action 'deleteItem' file.id)}}Delete{{/bs-button}}
+  {{#bs-button class="btn-default btn-xs" onClick=(action 'setDeleteFileFlag' false)}}Cancel{{/bs-button}}
+{{else}}
+  <div style="display: inline-block;">
+    {{file.name}}
+  </div>
+  <div class="btn-group " style="display: inline-block;">
+    <button type="button" class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a {{action 'editFileOn' file.name}}>Edit {{type}}</a></li>
+      <li><a {{action 'setDeleteFileFlag' true}}>Delete {{type}}</a></li>
+    </ul>
+  </div>
+{{/if}}
+
+{{yield}}

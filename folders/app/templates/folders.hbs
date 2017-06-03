@@ -1,10 +1,11 @@
 <h1>Folders</h1>
 {{!-- <div class="w3-row">
   <div class="w3-third w3-container "> --}}
+
 <div class="flex-container">
   <div class="flex-item">
       {{#each model.rootFolders as |folder|}}
-        {{expandable-folder folder=folder}}
+        {{expandable-folder folder=folder type='folder'}}
       {{/each}}
       {{#bs-button class="btn-xs" onClick=(action 'addingItem')}}+ folder{{/bs-button}}
       {{#if isAddingItem}}

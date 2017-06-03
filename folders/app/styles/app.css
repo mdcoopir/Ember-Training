@@ -10,9 +10,9 @@
   padding: 10px;
   border-left: 1px solid gray;
 }
-.side-folder {
-  padding: 5px;
-  font-size: 1.3em;
+.sidebar-folder {
+  white-space: nowrap;
+  display: inline-block;
 }
 
 .expanded-content {
