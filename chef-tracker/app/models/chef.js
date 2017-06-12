@@ -10,5 +10,7 @@ export default Model.extend({
   hasCulinaryDegree: attr('boolean', {defaultValue: false}),
   culinarySchool: attr('string'),
   imageUrl: attr('string'),
-  restaurant: belongsTo()
+  restaurant: belongsTo(),
+  health: attr('number'),
+  fame: attr('number')
 });

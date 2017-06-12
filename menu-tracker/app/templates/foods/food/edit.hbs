@@ -4,7 +4,13 @@
     Name:
   </div>
   <div class="w3-rest w3-left-align">
-    {{input value=model.food.name placeholder="Name"}} {{model.food.id}}
+    {{input value=model.food.name placeholder="Name"}}
+  </div>
+  <div class="w3-third w3-right-align">
+    Health rating:
+  </div>
+  <div class="w3-rest w3-left-align">
+    {{input value=model.food.healthRating placeholder="Heath Rating"}}
   </div>
   <div class="w3-third w3-right-align">
     Description:
@@ -35,7 +41,7 @@
     {{/x-select}}
     {{model.food.restaurant.content.id}}
   </div>
-  
+
   <div class="w3-third w3-right-align">
     Image URL:
   </div>

@@ -12,4 +12,12 @@
       </li>
     {{/each}}
   </ul>
+  {{#if model.foods}}
+    <p>Max Health Rating: {{model.restaurant.maxHealthRatings}}</p>
+    <p>Average Health Rating: {{round model.restaurant.avgHealthRatings 3}}/10</p>
+    rating-bar {{rating-bar}}
+  {{else}}
+    <p>Please enter foods for this restaurant.</p>
+  {{/if}}
+
 </div>

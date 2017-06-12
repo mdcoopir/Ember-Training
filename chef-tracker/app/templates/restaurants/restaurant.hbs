@@ -7,7 +7,11 @@
 
   {{#each model.restaurant.chefs as |chef|}}
     <div class="w3-container w3-card-4">
-      {{#link-to 'chefs.chef' chef.id}}{{chef.name}}{{/link-to}}
+      {{#link-to 'chefs.chef' chef.id}}{{chef.name}}{{/link-to}}<br/>
     </div>
   {{/each}}
+  <p>
+    Health of Food - Max: {{model.restaurant.maxHealthRatings}}  Average: {{round model.restaurant.avgHealthRatings 2}}<br/>
+    Fame of Chefs - Max: {{model.restaurant.maxFameRatings}}  Average: {{round model.restaurant.avgFameRatings 2}}
+  </p>
 </div>
