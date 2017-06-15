@@ -15,7 +15,7 @@
   {{#if model.foods}}
     <p>Max Health Rating: {{model.restaurant.maxHealthRatings}}</p>
     <p>Average Health Rating: {{round model.restaurant.avgHealthRatings 3}}/10</p>
-    rating-bar {{rating-bar}}
+    {{rating-bar model.restaurant.avgHealthRatings 300 color='red'}}
   {{else}}
     <p>Please enter foods for this restaurant.</p>
   {{/if}}

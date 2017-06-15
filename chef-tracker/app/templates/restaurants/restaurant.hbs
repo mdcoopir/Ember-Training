@@ -11,7 +11,17 @@
     </div>
   {{/each}}
   <p>
-    Health of Food - Max: {{model.restaurant.maxHealthRatings}}  Average: {{round model.restaurant.avgHealthRatings 2}}<br/>
-    Fame of Chefs - Max: {{model.restaurant.maxFameRatings}}  Average: {{round model.restaurant.avgFameRatings 2}}
+    Health of Food - Max: {{model.restaurant.maxHealthRatings}}
+    {{#if (gt model.restaurant.chefs.length 1)}}
+      Average: {{round model.restaurant.avgHealthRatings 2}}<br/>
+      {{rating-bar model.restaurant.avgHealthRatings 300 color='blue'}}
+    {{else}}
+      <br/>
+    {{/if}}
+    Fame of Chefs - Max: {{model.restaurant.maxFameRatings}}
+    {{#if (gt model.restaurant.chefs.length 1)}}
+      Average: {{round model.restaurant.avgFameRatings 2}}
+      {{rating-bar model.restaurant.avgFameRatings 300 color='green'}}
+    {{/if}}
   </p>
 </div>

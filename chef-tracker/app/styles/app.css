@@ -31,3 +31,14 @@
   background-color: blue;
   display: block;
 }
+.rating-bar {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 4px;
+  height:15px;
+}
+.inner-bar {
+  height: 100%;
+  background-color: blue;
+  display: block;
+}
