@@ -11,7 +11,7 @@
 </div>
 
 {{#each model.posts as |post|}}
-  {{post-show post=post}}
+  {{post-show post=post savePost=(action 'savePost') }}
   <div style="margin-top:-2em; margin-left: 1em">
     {{#link-to "post" post.id }}Focus{{/link-to}}
   </div>

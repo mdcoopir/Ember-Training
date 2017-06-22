@@ -1,16 +1,26 @@
 <div class="post">
 
   <h3>{{post.title}}</h3>
-  <p>
-    {{markdown-to-html post.body}}
-  </p>
-  <div class="pull-right" style="float:right; margin-right:1em;">
-    {{#if edditing}}
-      <button {{action 'savePost' model.post}} >Save</button>
-    {{else}}
-      <button {{action 'editPost'}} >Edit</button>
-    {{/if}}
-    <button {{action 'deletePost' model.post}}>Delete</button>
-  </div>
+  {{#if isEditting}}
+    {{#with (changeset post) as |changeset|}}
+      <p>
+        Title:  {{input type='text' value=changeset.title placeholder='Enter Title'}} <br/>
+        Post:  {{textarea value=changeset.body placeholder='Enter Body'}}
+      </p>
+      <div class="pull-right" style="float:right; margin-right:1em;">
+        <button {{action 'savePost' changeset}} >Save</button>
+        <button {{action 'toggleEdit' }} >Cancel</button>
+        <button {{action 'deletePost' post}}>Delete</button>
+      </div>
+    {{/with}}
+  {{else}}
+    <p>
+      {{markdown-to-html post.body}}
+    </p>
+    <div class="pull-right" style="float:right; margin-right:1em;">
+      <button {{action 'toggleEdit'}} >Edit</button>
+      <button {{action 'deletePost' post}}>Delete</button>
+    </div>
+  {{/if}}
   <div style="clear:both;">&nbsp;</div>
 </div>

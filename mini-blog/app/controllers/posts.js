@@ -13,6 +13,9 @@ export default Ember.Controller.extend({
       Ember.set(this, 'newTitle', '');
       Ember.set(this, 'newBody', '');
     },
+    savePost(post) {
+      post.save();
+    },
     deletePost(post) {
       post.destroyRecord();
     }

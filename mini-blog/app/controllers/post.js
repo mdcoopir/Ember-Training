@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  editting: false,
+  isEeditting: false,
   actions: {
     editPost() {
       this.toggleProperty('editting');

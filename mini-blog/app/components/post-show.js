@@ -1,10 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  editting: false,
+  isEditting: false,
   actions: {
-    editPost() {
-      this.toggleProperty('editting');
+    toggleEdit() {
+      this.toggleProperty('isEditting');
+    },
+    savePost(post) {
+      this.send('toggleEdit');
+      this.sendAction('savePost', post);
     },
     deletePost(post) {
       post.destroyRecord();
