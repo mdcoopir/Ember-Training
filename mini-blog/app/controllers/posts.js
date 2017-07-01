@@ -3,8 +3,11 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   newTitle: null,
   newBody: null,
-
+  isExpanded: false,
   actions: {
+    toggleExpand(){
+      this.toggleProperty('isExpanded');
+    },
     addPost() {
       this.store.createRecord('post', {
         title: this.get("newTitle"),
@@ -18,6 +21,9 @@ export default Ember.Controller.extend({
     },
     deletePost(post) {
       post.destroyRecord();
-    }
+    },
+    saveComment(comment) {
+      comment.save();
+    },
   }
 });

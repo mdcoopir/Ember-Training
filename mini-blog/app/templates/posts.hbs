@@ -1,17 +1,27 @@
-<h1>Marks Blargh</h1>
-<div class="new-post">
-  <h3>New blog post</h3>
-    <p>
-      {{input placeholder="Title" value=newTitle width="300px" size="50"}}
-    </p>
-    <p>
-      {{textarea placeholder="Body (Markdown allowed)" value=newBody cols="52" rows="10"}}
-    </p>
-    <button {{action "addPost"}}  class="pull-right">Add Post</button>
+
+<div class="w3-panel w3-card">
+  <button {{action "toggleExpand"}} class=" w3-round w3-gray w3-small" style="padding:3px; height:1.5em;">
+      <div style='top:-5px; position:relative;'>
+        {{#if isExpanded}}
+          -
+        {{else}}
+          +
+        {{/if}}
+      </div>
+    </button> New blog post
+    {{#if isExpanded}}
+      <p>
+        {{input placeholder="Title" value=newTitle width="300px" size="50"}}
+      </p>
+      <p>
+        {{textarea placeholder="Body (Markdown allowed)" value=newBody cols="52" rows="4"}}
+      </p>
+      <button {{action "addPost"}}  class="pull-right w3-button w3-green w3-round w3-padding-small">Add Post</button>
+    {{/if}}
 </div>
 
 {{#each model.posts as |post|}}
-  {{post-show post=post savePost=(action 'savePost') }}
+  {{post-show post=post savePost=(action 'savePost') saveComment=(action 'saveComment')}}
 
 {{/each}}
 {{outlet}}

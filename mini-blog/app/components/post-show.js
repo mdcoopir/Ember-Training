@@ -2,9 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   isEditting: false,
+  showComments: false,
   actions: {
     toggleEdit() {
       this.toggleProperty('isEditting');
+    },
+    toggleShowComments() {
+      this.toggleProperty('showComments');
     },
     savePost(post) {
       this.send('toggleEdit');
@@ -12,6 +16,9 @@ export default Ember.Component.extend({
     },
     deletePost(post) {
       post.destroyRecord();
+    },
+    saveComment(comment) {
+      this.sendAction('saveComment', comment);
     }
   }
 });

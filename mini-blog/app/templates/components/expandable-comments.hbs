@@ -1,0 +1,37 @@
+{{#if (gt comment.numComments 0)}}
+  <button {{action "toggleExpand"}} class="w3-button w3-round w3-gray w3-small" style="padding:3px;">
+    {{#if isExpanded}}
+      -
+    {{else}}
+      +
+    {{/if}}
+  </button>
+{{/if}}
+{{#if isEditting}}
+  {{#with (changeset comment) as |changeset|}}
+    {{input type='text' value=changeset.message placeholder='Enter Message'}}
+    <div class="pull-right" style="float:right; margin-right:1.5em;">
+      <button {{action 'saveComment' changeset}}  class="w3-button w3-green w3-round w3-padding-small w3-small">Save</button>
+      <button {{action 'toggleIsEditting' post}} class="w3-button w3-gray w3-round w3-padding-small w3-small">cancel</button>
+      <button {{action 'deleteComment' post}} class="w3-button w3-red w3-round w3-padding-small w3-small">Delete</button>
+    </div>
+  {{/with}}
+{{else}}
+  {{comment.message}}({{comment.numComments}})
+  <div class="pull-right" style="float:right; margin-right:1.5em;">
+    <button {{action 'toggleIsEditting'}}  class="w3-button w3-green w3-round w3-padding-small w3-small">Edit</button>
+    <button {{action 'deleteComment' post}} class="w3-button w3-red w3-round w3-padding-small w3-small">Delete</button>
+  </div>
+{{/if}}
+<br/>
+{{#if isExpanded}}
+  {{#if (gt comment.numComments 0)}}
+    {{#each comment.comments as |subComment|}}
+      <div class="w3-panel w3-card">
+        {{expandable-comments comment=subComment type='comment'}}
+      </div>
+    {{/each}}
+  {{/if}}
+{{/if}}
+
+{{yield}}
