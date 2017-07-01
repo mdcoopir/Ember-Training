@@ -1,7 +1,7 @@
 <div class="post w3-card">
 
-  <header class="w3-container w3-theme-l4">
-    <h3>{{post.title}}</h3>
+  <header class="w3-container w3-theme-l1">
+    <h4>{{post.title}}</h4>
   </header>
   {{#if isEditting}}
     {{#with (changeset post) as |changeset|}}
@@ -35,7 +35,7 @@
     </footer>
   {{/if}}
 </div>
-<div class="w3-panel w3-card" style="margin-top:-.1em;">
+<div class="w3-panel w3-card w3-theme-l2" style="margin-top:-.1em;">
   No comments yet...  <a href="#">Be the first</a>!
   <div class="w3-panel w3-card">
     This is a comment
