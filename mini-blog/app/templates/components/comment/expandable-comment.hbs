@@ -1,4 +1,3 @@
-
 {{#if isEditting}}
   {{comment/edit-comment changeset=(changeset comment) post=post toggleIsEditting=(action 'toggleIsEditting')}}
 {{else}}
@@ -6,19 +5,17 @@
 {{/if}}
 <br/>
 {{#if (gt comment.numComments 0)}}
-  <button {{action "toggleExpand"}} class=" w3-round w3-gray w3-small" style="padding:3px; height:1.5em;">
-    <div style='top:-5px; position:relative;'>{{isExpanded}}</div>
-  </button>
-  {{comment.numComments}} comment{{#if (gt comment.numComments 1)}}s{{/if}}:
-{{/if}}
-{{#if (eq isExpanded '-')}}
-  {{#if (gt comment.numComments 0)}}
+  <details>
+    <summary>
+      {{comment.numComments}} comment{{#if (gt comment.numComments 1)}}s{{/if}}:
+    </summary>
     {{#each comment.comments as |subComment|}}
       <div class="w3-panel w3-card">
         {{comment/expandable-comment comment=subComment post=post type='comment' addComment=(action 'addComment')}}
       </div>
     {{/each}}
-  {{/if}}
+  </details>
 {{/if}}
+
 
 {{yield}}
