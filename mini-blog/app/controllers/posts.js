@@ -3,27 +3,34 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   newTitle: null,
   newBody: null,
-  isExpanded: false,
+  isExpanded: '+',
   actions: {
     toggleExpand(){
-      this.toggleProperty('isExpanded');
+      var newExpand = (this.get('isExpanded') === '-') ? '+': '-';
+      this.set('isExpanded', newExpand);
     },
-    addPost() {
+    addPost(postEntry) {
       this.store.createRecord('post', {
-        title: this.get("newTitle"),
-        body: this.get("newBody")
+        title: postEntry._changes.title,
+        body: postEntry._changes.body
       }).save();
-      Ember.set(this, 'newTitle', '');
-      Ember.set(this, 'newBody', '');
     },
-    savePost(post) {
-      post.save();
-    },
-    deletePost(post) {
-      post.destroyRecord();
-    },
-    saveComment(comment) {
-      comment.save();
-    },
+    addComment(comment, post) {
+      if(post.title ){
+        this.store.createRecord('comment', {
+          message: comment._changes.message,
+          post: post
+        }).save().then(()=>{
+          post.save();
+        });
+      } else {
+        this.store.createRecord('comment', {
+          message: comment._changes.message,
+          parent: post
+        }).save().then(()=>{
+          post.save();
+        });
+      }
+    }
   }
 });

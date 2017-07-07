@@ -1,0 +1,16 @@
+<div class="w3-container">
+  {{markdown-to-html post.body}}
+</div>
+<footer class="w3-container w3-theme-l4 w3-padding-small">
+  {{#if (not isFocused)}}
+    <div class="pull-left" style="float:left;">
+      {{#link-to "post" post.id }}Focus{{/link-to}}
+    </div>
+  {{/if}}
+
+  <div class="pull-right" style="float:right; margin-right:1.5em;">
+    <button {{action 'toggleEdit'}}  class="w3-button w3-gray w3-round w3-padding-small"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+    <button {{action 'deletePost' post}} class="w3-button w3-red w3-round w3-padding-small"><i class="fa fa-trash" aria-hidden="true"></i></button>
+  </div>
+</footer>
+{{yield}}
