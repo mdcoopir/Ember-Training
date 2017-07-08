@@ -9,8 +9,8 @@
   {{/if}}
 
   <div class="pull-right" style="float:right; margin-right:1.5em;">
-    <button {{action 'toggleEdit'}}  class="w3-button w3-gray w3-round w3-padding-small"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-    <button {{action 'deletePost' post}} class="w3-button w3-red w3-round w3-padding-small"><i class="fa fa-trash" aria-hidden="true"></i></button>
+    <button {{action 'toggleEdit'}}  class="w3-button w3-gray w3-round w3-padding-small" title='Edit this post'><i class="fa fa-pencil" aria-hidden="true"></i></button>
+    <button {{action 'deletePost' post}} class="w3-button w3-red w3-round w3-padding-small" title='Delete this post'><i class="fa fa-trash" aria-hidden="true"></i></button>
   </div>
 </footer>
 {{yield}}
