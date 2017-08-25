@@ -1,19 +1,14 @@
   <div class="{{if food.isAvailable ' ' 'not-available'}} w3-card-3 w3-border ">
-    <header class="w3-container w3-theme-l4">
-      <span>{{food.excitedName}} </span>
-      <div class='itemButtons'>
-        <i {{action "destroyItem" food}} class="fa fa-trash" aria-hidden="true">&nbsp;</i>
-        {{#link-to 'foods.food.edit' food.id}}<i class='fa fa-pencil-square-o' aria-hidden='true'></i>{{/link-to}}
-        <i {{action "toggleAvailablity" food}} class="fa fa-sign-{{if food.isAvailable 'out' 'in'}}" aria-hidden="true"></i>
-        {{#if food.isAvailable}}
-          <i  {{action 'toggleOpen'}} class="fa fa-chevron-{{if isOpen 'down' 'right'}}" aria-hidden="true"></i>
-        {{else}}
-          &nbsp;&nbsp;
-        {{/if}}
-      </div>
-    </header>
+    <details>
+      <summary class="w3-container w3-theme-l4">
+        <span>{{food.excitedName}} </span>
+        <div class='itemButtons'>
+          <i {{action "destroyItem" food}} class="fa fa-trash" aria-hidden="true">&nbsp;</i>
+          {{#link-to 'foods.food.edit' food.id}}<i class='fa fa-pencil-square-o' aria-hidden='true'></i>{{/link-to}}
+          <i {{action "toggleAvailablity" food}} class="fa fa-sign-{{if food.isAvailable 'out' 'in'}}" aria-hidden="true"></i>
+        </div>
+      </summary>
 
-    {{#if isOpen}}
       <div class="w3-container">
         {{icon-image food.imageUrl float='left'}}
         {{food.description}}
@@ -21,8 +16,7 @@
         <span>Health Rating: {{food.healthRating}} </span>
         <br/>
         {{food.restaurant.id}} - {{food.restaurant.name}}
-        <div style="clear: both;"> </div>
 
       </div>
-    {{/if}}
+    </details>
   </div>

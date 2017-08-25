@@ -1,0 +1,8 @@
+<h1>Login</h1>
+
+{{#each model as |user|}}
+  <div>
+    {{user.displayName}} <button>login</button>
+  </div>
+{{/each}}
+{{outlet}}
