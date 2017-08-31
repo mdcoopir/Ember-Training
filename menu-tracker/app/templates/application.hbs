@@ -8,7 +8,13 @@
     <span class='pull-right'>
     {{link-to 'About' 'about' class="w3-bar-item w3-button"}}
     {{link-to 'Contact us' 'contact' class="w3-bar-item w3-button"}}
+    {{#if mySession.currentUser}}
+      <div  class="w3-bar-item w3-button">
+        Welcome {{mySession.currentUser.displayName}}!
+      </div>{{!--  {{link-to 'Logout' 'logout' class="w3-bar-item w3-button"}} --}}
+    {{else}}
       {{link-to 'Login' 'login' class="w3-bar-item w3-button"}}
+    {{/if}}
     </span>
 
   </div>

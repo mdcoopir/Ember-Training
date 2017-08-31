@@ -2,7 +2,11 @@
 
 {{#each model as |user|}}
   <div>
-    {{user.displayName}} <button>login</button>
+    {{user.displayName}} <button {{action 'login' user}}>login</button>
   </div>
 {{/each}}
+
+{{#if mySession.currentUser}}
+  You are logged in as {{mySession.currentUser.displayName}}
+{{/if}}
 {{outlet}}
