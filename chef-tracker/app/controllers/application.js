@@ -7,4 +7,5 @@ export default Ember.Controller.extend({
       this.get('mySession').logout();
     }
   }
+
 });

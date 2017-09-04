@@ -1,12 +1,10 @@
 <h1>Login</h1>
 
-{{#each model as |user|}}
-  <div>
-    {{user.displayName}} <button {{action 'login' user}}>login</button>
-  </div>
-{{/each}}
+{{#with (changeset newUser UserValidations) as |changeset|}}
+  {{validated-input changeset=changeset label='Email' propertyName='email' alignment='fieldRight'}}
+  {{validated-input changeset=changeset label='Password' propertyName='password'  alignment='fieldRight' password=true}}
 
-{{#if mySession.currentUser}}
-  You are logged in as {{mySession.currentUser.displayName}}
-{{/if}}
+  <button {{action 'login' changeset.email changeset.password}} disabled={{disableLoginButton}}>Login</button>
+{{/with}}
+
 {{outlet}}

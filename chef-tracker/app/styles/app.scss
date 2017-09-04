@@ -1,0 +1,85 @@
+@import "w3-theme-dark-grey";
+@import "w3";
+@import "chef-list";
+@import "bootstrap";
+
+.w3-bar .pageHeading {
+  float: left;
+  width: auto;
+  padding: 8px 16px;
+}
+.w3-row .w3-right-align {
+  max-width: 250px;
+  padding-right: 10px;
+}
+.image-icon {
+  max-width: 100px;
+  max-height: 100px;
+  padding: 7px;
+}
+.float-left {
+  float: left;
+}
+.float-right{
+  float: right;
+}
+.rating-bar {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 4px;
+  height:15px;
+}
+.inner-bar {
+  height: 100%;
+  background-color: blue;
+  display: block;
+}
+.rating-bar {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 4px;
+  height:15px;
+}
+.inner-bar {
+  height: 100%;
+  background-color: blue;
+  display: block;
+}
+.field label {
+  width: 10em;
+  text-align: right;
+}
+label {
+  display: block;
+}
+.field {
+  position: relative;
+  display: inline-block;
+  // border-bottom: 1px dotted black;
+}
+.field-error {
+  @extend .alert;
+  @extend .alert-warning;
+  @extend .small;
+  visibility: visible;
+  position: absolute;
+  width: 30em;
+  padding: 5px 0;
+  border-radius: 6px;
+  z-index: 1;
+  top: -5px;
+  left: 105%;
+}
+.field-error::after {
+    content: "";
+    position: absolute;
+    top: 1.5em;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #555 transparent transparent;
+}
+.fieldRight {
+  display: inline-block;
+}

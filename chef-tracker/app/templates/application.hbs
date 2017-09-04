@@ -4,9 +4,26 @@
       Chef Tracker
     </div>
     {{link-to 'Chefs' 'chefs' class="w3-bar-item w3-button"}}
-    {{link-to 'About' 'about' class="w3-bar-item w3-button"}}
-    {{link-to 'Chef Training' 'training' class="w3-bar-item w3-button"}}
     {{link-to 'Restaurants' 'restaurants' class="w3-bar-item w3-button"}}
+    <div class="float-right">
+      {{link-to 'About' 'about' class="w3-bar-item w3-button"}}
+      {{link-to 'Chef Training' 'training' class="w3-bar-item w3-button"}}
+      {{#if mySession.currentUser}}
+        <div class="w3-bar-item w3-button">
+          Welcome {{mySession.currentUser.displayName}}
+        </div>
+        <a href="/" onClick={{action 'logout'}} class="w3-bar-item w3-button">Logout</a>
+      {{else}}
+        {{link-to 'Login' 'login' class="w3-bar-item w3-button"}}
+        {{link-to 'Register' 'register' class="w3-bar-item w3-button"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="flash-message">
+    {{#each flashMessages.queue as |flash|}}
+      {{flash-message flash=flash}}
+    {{/each}}
   </div>
 
   {{outlet}}

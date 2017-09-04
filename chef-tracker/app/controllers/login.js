@@ -1,26 +1,18 @@
 import Ember from 'ember';
-import UserValidations from '../validations/user';
-import lookupValidator from 'ember-changeset-validations';
-import Changeset from 'ember-changeset';
 
 export default Ember.Controller.extend({
-  UserValidations,
-  mySession: Ember.inject.service(),
+  mySession: Ember.inject.service('mySession'),
   flashMessages: Ember.inject.service(),
-  newUser: null,
-  newUserChangeset: null,
+  email: "",
+  password: "",
   disableLoginButton: Ember.computed('email', 'password', function() {
-    let changeset = this.get('newUserChangeset');
-    if(changeset.get('isInvalid')) {
-      return true;
-    } else {
+    let email = this.get('email'), pw = this.get('password')
+    if(email && email.length>0 && pw && pw.length>0) {
       return false;
+    } else {
+      return true;
     }
   }),
-  init(){
-    this.set('newUser', this.get('store').createRecord('user', {email: "", displayName: "", password: ""}));
-    this.set('newUserChangeset', new Changeset(this.get('newUser'), lookupValidator(UserValidations), UserValidations));
-  },
   actions: {
     login(email, password){
       this.get('mySession').login(email, password).then(() => {

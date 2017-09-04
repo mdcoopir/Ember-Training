@@ -5,11 +5,12 @@ import Changeset from 'ember-changeset';
 
 export default Ember.Controller.extend({
   UserValidations,
-  mySession: Ember.inject.service(),
-  flashMessages: Ember.inject.service(),
+  store: Ember.inject.service(),
   newUser: null,
   newUserChangeset: null,
-  disableLoginButton: Ember.computed('email', 'password', function() {
+  mySession: Ember.inject.service(),
+  flashMessages: Ember.inject.service(),
+  disableRegisterButton: Ember.computed('newUserChangeset.isInvalid', function() {
     let changeset = this.get('newUserChangeset');
     if(changeset.get('isInvalid')) {
       return true;
@@ -22,13 +23,17 @@ export default Ember.Controller.extend({
     this.set('newUserChangeset', new Changeset(this.get('newUser'), lookupValidator(UserValidations), UserValidations));
   },
   actions: {
-    login(email, password){
-      this.get('mySession').login(email, password).then(() => {
-        let message = 'You are logged in as: '+this.get('mySession.currentUser.displayName');
+    register(changeset){
+      this.get('flashMessages').clearMessages();
+      this.get('mySession').register(changeset).then(() => {
+        let message = 'You are registered in as: '+this.get('mySession.currentUser.displayName');
         this.get('flashMessages').success(message);
-        this.transitionToRoute('restaurants');
-      }).catch(() => {
-        this.get('flashMessages').danger('Email and password are not valid.');
+        this.transitionToRoute('chefs');
+      }).catch((errors) => {
+        errors.forEach((error)=>{
+          let message = `Error on ${error.attribute}: ${error.message}`;
+          this.get('flashMessages').danger(message, {sticky: true});
+        });
       });
     }
   }

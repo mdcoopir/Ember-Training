@@ -8,6 +8,7 @@ export default Ember.Service.extend({
   currentUser: null,
   login(email, password) {
     let auth = this.get('firebase').auth();
+
     return auth.signInWithEmailAndPassword(email, password).then((firebaseUser)=>{
       return this.get('store').findRecord('user', firebaseUser.uid).then((user) => {
         this.set('currentUser', user);
@@ -18,7 +19,6 @@ export default Ember.Service.extend({
   },
   register(changeset) {
     let auth = this.get('firebase').auth(), change = changeset.get('change');
-
     return changeset.validate().then(()=>{
       if(changeset.get('isValid')) {
         return auth.createUserWithEmailAndPassword(change.email, change.password).then((firebaseUser)=>{
