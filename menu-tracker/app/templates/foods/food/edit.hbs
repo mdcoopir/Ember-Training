@@ -1,54 +1,59 @@
 <h1>Edit {{model.food.name}}</h1>
-<div class="w3-row">
-  <div class="w3-third w3-right-align">
-    Name:
-  </div>
-  <div class="w3-rest w3-left-align">
-    {{input value=model.food.name placeholder="Name"}}
-  </div>
-  <div class="w3-third w3-right-align">
-    Health rating:
-  </div>
-  <div class="w3-rest w3-left-align">
-    {{input value=model.food.healthRating placeholder="Heath Rating"}}
-  </div>
-  <div class="w3-third w3-right-align">
-    Description:
-  </div>
-  <div class="w3-rest w3-left-align">
-    {{textarea value=model.food.description cols=50 placeholder="Description"}}
-  </div>
-  <div class="w3-third w3-right-align">
-    Course:
-  </div>
-  <div class="w3-rest w3-left-align">
-    {{#x-select value=model.food.course action="selectCourse" as |xs|}}
-      {{#xs.option value="Appitizer" }}Appitizer{{/xs.option}}
-      {{#xs.option value="Entree" }}Entree{{/xs.option}}
-      {{#xs.option value="Side" }}Side{{/xs.option}}
-      {{#xs.option value="Desert" }}Desert{{/xs.option}}
-    {{/x-select}}
-  </div>
+{{#if (can-edit-food model.food.restaurant.user.id)}}
 
-  <div class="w3-third w3-right-align">
-    Restaurant:
-  </div>
-  <div class="w3-rest w3-left-align">
-    {{#x-select value=model.food.restaurant.content action="selectRestaurant" as |xs2|}}
-      {{#each model.restaurants as |restaurant|}}
-        {{#xs2.option value=restaurant}}{{restaurant.name}}{{/xs2.option}}
-      {{/each}}
-    {{/x-select}}
-    {{model.food.restaurant.content.id}}
-  </div>
+  <div class="w3-row">
+    <div class="w3-third w3-right-align">
+      Name:
+    </div>
+    <div class="w3-rest w3-left-align">
+      {{input value=model.food.name placeholder="Name"}}
+    </div>
+    <div class="w3-third w3-right-align">
+      Health rating:
+    </div>
+    <div class="w3-rest w3-left-align">
+      {{input value=model.food.healthRating placeholder="Heath Rating"}}
+    </div>
+    <div class="w3-third w3-right-align">
+      Description:
+    </div>
+    <div class="w3-rest w3-left-align">
+      {{textarea value=model.food.description cols=50 placeholder="Description"}}
+    </div>
+    <div class="w3-third w3-right-align">
+      Course:
+    </div>
+    <div class="w3-rest w3-left-align">
+      {{#x-select value=model.food.course action="selectCourse" as |xs|}}
+        {{#xs.option value="Appitizer" }}Appitizer{{/xs.option}}
+        {{#xs.option value="Entree" }}Entree{{/xs.option}}
+        {{#xs.option value="Side" }}Side{{/xs.option}}
+        {{#xs.option value="Desert" }}Desert{{/xs.option}}
+      {{/x-select}}
+    </div>
 
-  <div class="w3-third w3-right-align">
-    Image URL:
-  </div>
-  <div class="w3-rest w3-left-align">
-    {{input value=model.food.imageUrl placeholder="Image URL"}}
-  </div>
+    <div class="w3-third w3-right-align">
+      Restaurant:
+    </div>
+    <div class="w3-rest w3-left-align">
+      {{#x-select value=model.food.restaurant.content action="selectRestaurant" as |xs2|}}
+        {{#each model.restaurants as |restaurant|}}
+          {{#xs2.option value=restaurant}}{{restaurant.name}}{{/xs2.option}}
+        {{/each}}
+      {{/x-select}}
+      {{model.food.restaurant.content.id}}
+    </div>
 
-  {{icon-image model.food.imageUrl float='left'}}
-</div>
-<button {{action 'saveFood'}} class="float-right">Save</button> {{outlet}}
+    <div class="w3-third w3-right-align">
+      Image URL:
+    </div>
+    <div class="w3-rest w3-left-align">
+      {{input value=model.food.imageUrl placeholder="Image URL"}}
+    </div>
+
+    {{icon-image model.food.imageUrl float='left'}}
+  </div>
+  <button {{action 'saveFood'}} class="float-right">Save</button> {{outlet}}
+{{else}}
+  You do not own this food so you can not edit it.
+{{/if}}

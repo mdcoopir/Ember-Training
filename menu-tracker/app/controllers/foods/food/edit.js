@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  mySession: Ember.inject.service(),
   actions: {
     saveFood() {
       this.get('model.food').save().then(()=> {

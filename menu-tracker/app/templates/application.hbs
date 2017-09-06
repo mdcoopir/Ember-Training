@@ -9,7 +9,8 @@
       {{link-to 'Contact us' 'contact' class="w3-bar-item w3-button"}}
       {{#if mySession.currentUser}}
         <div  class="w3-bar-item w3-button">
-          Welcome {{mySession.currentUser.displayName}}!
+          Welcome
+          {{link-to mySession.currentUser.displayName 'me'}}!
         </div>
         <a href="/" onClick={{action 'logout'}} class="w3-bar-item w3-button">Logout</a>
       {{else}}

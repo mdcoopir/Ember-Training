@@ -1,0 +1,10 @@
+<h1>{{me.displayName}}</h1>
+<h3>Restaurants</h3>
+<ul>
+  <li>
+    {{#each me.restaurants as |restaurant|}}
+      {{restaurant.name}} <button {{action 'sellRestaurant' restaurant}}>Sell</button>
+    {{/each}}
+  </li>
+</ul>
+{{outlet}}
