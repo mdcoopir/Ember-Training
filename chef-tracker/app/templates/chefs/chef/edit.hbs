@@ -1,74 +1,76 @@
 <h1>Edit {{model.chef.name}}</h1>
-<div class="w3-row">
-  <div class="w3-half w3-right-align" >
-    Name:
-  </div>
-  <div class="w3-rest w3-left-align">
-    {{input value=model.chef.name}}
-  </div>
-  <div class="w3-half w3-right-align" >
-    Description:
-  </div>
-  <div class="w3-rest w3-left-align">
-    {{textarea value=model.chef.description cols=50}}
-  </div>
-  <div class="w3-half w3-right-align" >
-    Health rating:
-  </div>
-  <div class="w3-rest w3-left-align">
-    {{input value=model.chef.health size=5 maxlength='3'}}
-  </div>
-  <div class="w3-half w3-right-align" >
-    Fame:
-  </div>
-  <div class="w3-rest w3-left-align">
-    {{input value=model.chef.fame size=5 maxlength='3'}}
-  </div>
-  <div class="w3-half w3-right-align" >
-    Number of students:
-  </div>
-  <div class="w3-rest w3-left-align">
-    <button {{action "removeStudent" model.chef}}>-</button>
-      {{model.chef.students}}
-    <button {{action "addStudent" model.chef}}>+</button>
-  </div>
-  <div style="clear:both;">
-
-  </div>
-  <div class="w3-half w3-right-align" >&nbsp;</div>
-  <div class="w3-rest w3-left-align">
-    {{input type="checkbox" name='hasCulinaryDegree' checked=model.chef.hasCulinaryDegree cols=50}}  Has Culinary Degree
-  </div>
-  {{#if model.chef.hasCulinaryDegree}}
-    <div>
-      <div class="w3-half w3-right-align" >
-        Culinary School Attended:
-      </div>
-      <div class="w3-rest w3-left-align">
-        {{input value=model.chef.culinarySchool}}
-      </div>
+{{#if (can-edit-chef model.chef.restaurant.user.id)}}
+  <div class="w3-row">
+    <div class="w3-half w3-right-align" >
+      Name:
     </div>
-  {{/if}}
+    <div class="w3-rest w3-left-align">
+      {{input value=model.chef.name}}
+    </div>
+    <div class="w3-half w3-right-align" >
+      Description:
+    </div>
+    <div class="w3-rest w3-left-align">
+      {{textarea value=model.chef.description cols=50}}
+    </div>
+    <div class="w3-half w3-right-align" >
+      Health rating:
+    </div>
+    <div class="w3-rest w3-left-align">
+      {{input value=model.chef.health size=5 maxlength='3'}}
+    </div>
+    <div class="w3-half w3-right-align" >
+      Fame:
+    </div>
+    <div class="w3-rest w3-left-align">
+      {{input value=model.chef.fame size=5 maxlength='3'}}
+    </div>
+    <div class="w3-half w3-right-align" >
+      Number of students:
+    </div>
+    <div class="w3-rest w3-left-align">
+      <button {{action "removeStudent" model.chef}}>-</button>
+        {{model.chef.students}}
+      <button {{action "addStudent" model.chef}}>+</button>
+    </div>
+    <div style="clear:both;">
 
-  <div class="w3-half w3-right-align" >
-    Restaurant:
-  </div>
-  <div class="w3-rest w3-left-align">
-    {{#x-select value=model.chef.restaurant.content action="selectRestaurant" as |xs2|}}
-      {{#each model.restaurants as |restaurant|}}
-        {{#xs2.option value=restaurant}}{{restaurant.name}}{{/xs2.option}}
-      {{/each}}
-    {{/x-select}}
-    {{model.chef.restaurant.content.id}}
-  </div>
+    </div>
+    <div class="w3-half w3-right-align" >&nbsp;</div>
+    <div class="w3-rest w3-left-align">
+      {{input type="checkbox" name='hasCulinaryDegree' checked=model.chef.hasCulinaryDegree cols=50}}  Has Culinary Degree
+    </div>
+    {{#if model.chef.hasCulinaryDegree}}
+      <div>
+        <div class="w3-half w3-right-align" >
+          Culinary School Attended:
+        </div>
+        <div class="w3-rest w3-left-align">
+          {{input value=model.chef.culinarySchool}}
+        </div>
+      </div>
+    {{/if}}
 
-  <div class="w3-half w3-right-align" >
-    Image URL:
+    <div class="w3-half w3-right-align" >
+      Restaurant:
+    </div>
+    <div class="w3-rest w3-left-align">
+      {{#x-select value=model.chef.restaurant.content action="selectRestaurant" as |xs2|}}
+        {{#each model.restaurants as |restaurant|}}
+          {{#xs2.option value=restaurant}}{{restaurant.name}}{{/xs2.option}}
+        {{/each}}
+      {{/x-select}}
+      {{model.chef.restaurant.content.id}}
+    </div>
+
+    <div class="w3-half w3-right-align" >
+      Image URL:
+    </div>
+    <div class="w3-rest w3-left-align">
+      {{input value=model.chef.imageUrl}}
+    </div>
+    {{icon-image model.chef.imageUrl float="left"}}
   </div>
-  <div class="w3-rest w3-left-align">
-    {{input value=model.chef.imageUrl}}
-  </div>
-  {{icon-image model.chef.imageUrl float="left"}}
-</div>
-<button {{action 'saveChef'}} class='float-right'>Save</button>
+  <button {{action 'saveChef'}} class='float-right'>Save</button>
+{{/if}}
 {{outlet}}
