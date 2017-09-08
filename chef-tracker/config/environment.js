@@ -5,12 +5,12 @@ module.exports = function(environment) {
     modulePrefix: 'chef-tracker',
     environment: environment,
     firebase: {
-      apiKey: "AIzaSyAgT4Wsl73VuT4u6bjcf99S9ZRi4eY3YVg",
-      authDomain: "chef-tracker-d9878.firebaseapp.com",
-      databaseURL: "https://chef-tracker-d9878.firebaseio.com",
-      projectId: "chef-tracker-d9878",
-      storageBucket: "chef-tracker-d9878.appspot.com",
-      messagingSenderId: "659809175832"
+      apiKey: "AIzaSyCRBeuu2gjwiMCMWvdob7F7BLdGzgseBZg",
+      authDomain: "chef-tracker-test.firebaseapp.com",
+      databaseURL: "https://chef-tracker-test.firebaseio.com",
+      projectId: "chef-tracker-test",
+      storageBucket: "",
+      messagingSenderId: "508959697684"
     },
     baseURL: '/',
     locationType: 'auto',
@@ -48,7 +48,14 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.firebase = {
+      apiKey: "AIzaSyAgT4Wsl73VuT4u6bjcf99S9ZRi4eY3YVg",
+      authDomain: "chef-tracker-d9878.firebaseapp.com",
+      databaseURL: "https://chef-tracker-d9878.firebaseio.com",
+      projectId: "chef-tracker-d9878",
+      storageBucket: "chef-tracker-d9878.appspot.com",
+      messagingSenderId: "659809175832"
+    };
   }
 
   return ENV;

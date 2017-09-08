@@ -6,12 +6,12 @@ module.exports = function(environment) {
     environment: environment,
     //contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
     firebase: {
-      apiKey: "AIzaSyBKsghvy5jgvjcqmfgJuZi9WN3ooFy5Zq0",
-      authDomain: "menu-tracker-540d9.firebaseapp.com",
-      databaseURL: "https://menu-tracker-540d9.firebaseio.com",
-      projectId: "menu-tracker-540d9",
-      storageBucket: "menu-tracker-540d9.appspot.com",
-      messagingSenderId: "945402906744"
+      apiKey: "AIzaSyASQeehWXMohHifKMRHBnR3fJ_wGB-sxjg",
+      authDomain: "menu-tracker-7ebe8.firebaseapp.com",
+      databaseURL: "https://menu-tracker-7ebe8.firebaseio.com",
+      projectId: "menu-tracker-7ebe8",
+      storageBucket: "menu-tracker-7ebe8.appspot.com",
+      messagingSenderId: "497836973332"
     },
     baseURL: '/',
     locationType: 'auto',
@@ -49,7 +49,14 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.firebase = {
+      apiKey: "AIzaSyBKsghvy5jgvjcqmfgJuZi9WN3ooFy5Zq0",
+      authDomain: "menu-tracker-540d9.firebaseapp.com",
+      databaseURL: "https://menu-tracker-540d9.firebaseio.com",
+      projectId: "menu-tracker-540d9",
+      storageBucket: "menu-tracker-540d9.appspot.com",
+      messagingSenderId: "945402906744"
+    };
   }
 
   return ENV;
